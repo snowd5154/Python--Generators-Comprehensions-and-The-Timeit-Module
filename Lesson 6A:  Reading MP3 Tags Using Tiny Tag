@@ -1,0 +1,12 @@
+from tinytag import TinyTag
+
+try:
+    tag = TinyTag.get('song.mp3')
+    print(f"Artist: {tag.artist}")
+    print(f"Title: {tag.title}")
+    print(f"Album: {tag.album}")
+    print(f"Genre: {tag.genre}")
+    print(f"Track: {tag.track}")
+    print(f"Year: {tag.year}")
+except Exception as e:
+    print(f"Error reading tags: {e}")
