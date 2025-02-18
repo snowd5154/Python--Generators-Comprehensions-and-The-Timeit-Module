@@ -1,0 +1,21 @@
+import math
+
+def calculate_circle_properties(radius):
+  """Calculates the circumference and area of a circle.
+
+  Args:
+    radius: The radius of the circle.
+
+  Returns:
+    A tuple containing the circumference and area of the circle.
+  """
+  circumference = 2 * math.pi * radius
+  area = math.pi * radius**2
+  return circumference, area
+
+# Example usage
+radius = 5
+circumference, area = calculate_circle_properties(radius)
+
+print(f"The circumference of the circle is: {circumference}")
+print(f"The area of the circle is: {area}")
