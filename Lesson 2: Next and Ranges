@@ -1,0 +1,13 @@
+# Example of next() with range
+my_range = range(3)
+my_iterator = iter(my_range)
+
+print(next(my_iterator))
+print(next(my_iterator))
+print(next(my_iterator))
+
+# The following line would raise StopIteration because the range is exhausted
+# print(next(my_iterator))
+
+# Using a default value to avoid StopIteration
+print(next(my_iterator, "default"))
