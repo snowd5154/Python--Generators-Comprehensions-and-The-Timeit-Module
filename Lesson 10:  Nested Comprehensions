@@ -1,0 +1,6 @@
+new_list = []
+for outer_item in outer_iterable:
+    inner_list = []
+    for inner_item in inner_iterable:
+        inner_list.append(expression)
+    new_list.append(inner_list)
