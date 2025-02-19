@@ -1,0 +1,11 @@
+list1 = [True, False, True]
+list2 = [False, False, False]
+list3 = []
+
+print(any(list1))
+print(any(list2))
+print(any(list3))
+
+print(all(list1))
+print(all(list2))
+print(all(list3))
