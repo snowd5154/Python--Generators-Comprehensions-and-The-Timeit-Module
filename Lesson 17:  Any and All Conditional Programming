@@ -1,0 +1,7 @@
+numbers = [2, 4, 6, 8, 10]
+if all(num % 2 == 0 for num in numbers):
+    print("All numbers are even")
+
+strings = ["hello", "", "world"]
+if any(strings):
+    print("At least one string is not empty")
