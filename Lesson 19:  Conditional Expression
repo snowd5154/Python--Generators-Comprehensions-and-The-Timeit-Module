@@ -1,0 +1,8 @@
+age = 20
+status = "adult" if age >= 18 else "minor"
+print(status)  # Output: adult
+
+x = 5
+y = 10
+max_value = x if x > y else y
+print(max_value) # Output: 10
