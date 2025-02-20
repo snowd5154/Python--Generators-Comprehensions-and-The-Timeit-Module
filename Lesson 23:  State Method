@@ -1,0 +1,76 @@
+&quot;&quot;&quot;State class: Base State class&quot;&quot;&quot;
+class State:
+
+    &quot;&quot;&quot;Base state. This is to share functionality&quot;&quot;&quot;
+
+    def scan(self):
+        
+        &quot;&quot;&quot;Scan the dial to the next station&quot;&quot;&quot;
+        self.pos += 1
+
+        &quot;&quot;&quot;check for the last station&quot;&quot;&quot;
+        if self.pos == len(self.stations):
+            self.pos = 0
+        print(&quot;Visiting... Station is {} {}&quot;.format(self.stations[self.pos], self.name))
+
+&quot;&quot;&quot;Separate Class for AM state of the radio&quot;&quot;&quot;
+class AmState(State):
+
+    &quot;&quot;&quot;constructor for AM state class&quot;&quot;&quot;
+    def __init__(self, radio):
+        
+        self.radio = radio
+        self.stations = [&quot;1250&quot;, &quot;1380&quot;, &quot;1510&quot;]
+        self.pos = 0
+        self.name = &quot;AM&quot;
+
+    &quot;&quot;&quot;method for toggling the state&quot;&quot;&quot;
+    def toggle_amfm(self):
+        print(&quot;Switching to FM&quot;)
+        self.radio.state = self.radio.fmstate
+
+&quot;&quot;&quot;Separate class for FM state&quot;&quot;&quot;
+class FmState(State):
+
+    &quot;&quot;&quot;Constriuctor for FM state&quot;&quot;&quot;
+    def __init__(self, radio):
+        self.radio = radio
+        self.stations = [&quot;81.3&quot;, &quot;89.1&quot;, &quot;103.9&quot;]
+        self.pos = 0
+        self.name = &quot;FM&quot;
+
+    &quot;&quot;&quot;method for toggling the state&quot;&quot;&quot;
+    def toggle_amfm(self):
+        print(&quot;Switching to AM&quot;)
+        self.radio.state = self.radio.amstate
+
+&quot;&quot;&quot;Dedicated class Radio&quot;&quot;&quot;
+class Radio:
+
+    &quot;&quot;&quot;A radio. It has a scan button, and an AM / FM toggle switch.&quot;&quot;&quot;
+
+    def __init__(self):
+        
+        &quot;&quot;&quot;We have an AM state and an FM state&quot;&quot;&quot;
+        self.fmstate = FmState(self)
+        self.amstate = AmState(self)
+        self.state = self.fmstate
+
+    &quot;&quot;&quot;method to toggle the switch&quot;&quot;&quot;
+    def toggle_amfm(self):
+        self.state.toggle_amfm()
+
+    &quot;&quot;&quot;method to scan &quot;&quot;&quot;
+    def scan(self):
+        self.state.scan()
+
+&quot;&quot;&quot; main method &quot;&quot;&quot;
+if __name__ == &quot;__main__&quot;:
+
+    &quot;&quot;&quot; create radio object&quot;&quot;&quot;
+    radio = Radio()
+    actions = [radio.scan] * 3 + [radio.toggle_amfm] + [radio.scan] * 3
+    actions *= 2
+
+    for action in actions:
+        action()
