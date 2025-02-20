@@ -1,0 +1,4 @@
+check_value = lambda x: x * 10 if x > 10 else (x * 5 if x < 5 else x)
+print(check_value(11))
+print(check_value(3))
+print(check_value(7))
